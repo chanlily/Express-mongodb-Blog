@@ -1,0 +1,26 @@
+<%include header.html %>
+<%include left_navbar.html %>
+<!-- List group -->
+<h1>Your name: <%= name %>  </h1>
+<%= user %>
+<p>Welcome to your home ~</p>
+<p><a class="btn btn-danger" href="/logout">我要注销 </a></p>
+<%include left_navEnd.html %>
+<script>
+    $(".col-sm-2.col-md-2 .list-group").find("li").eq(1).addClass("list-group-item-danger");
+    var len = $(".panel .list-group").find(".list-group-item").length;
+    //    console.log(len);
+    //    var b = $(".panel .list-group-item").html();
+    //    console.log(b);
+    for (var i = 0;i<len;i++){
+        var a = $(".panel .list-group-item").eq(i).find(".list-group-item-text").html();
+        if(a){
+            var dds = a.replace(/&amp;/g, "").replace(/<\/?.+?>/g,"").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+            dds = dds.substr(0,200);
+            $(".panel .list-group-item").eq(i).find(".list-group-item-text").html(dds);
+        }
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+    }
+</script>
+<%include footer.html %>

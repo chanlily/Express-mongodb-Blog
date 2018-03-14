@@ -1,0 +1,32 @@
+<%include header.html %>
+<div class="container-fluid">
+  <div class="row" style="margin-top: 86px;">
+    <% for (var a = 0;a< post.length;a++) { %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="/uploads/<%= post[a].coverImg %>" alt="<%= post[a].title%>" style="height: 50px;">
+        <div class="caption">
+          <h3><%= post[a].title%></h3>
+          <p class="content"><%= post[a].content%></p>
+          <p><a href="/show/<%= post[a].id%>" class="btn btn-primary" role="button">查看</a>
+            <a href="/show/<%= post[a].id%>" class="btn btn-default" role="button">收藏</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+    var len = $(".container-fluid .row").find(".col-sm-6.col-md-4").length;
+    for (var i = 0;i<len;i++){
+        var a = $(".col-sm-6.col-md-4").eq(i).find(".content").html();
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+        var dds = a.replace(/&amp;/g, "").replace(/<\/?.+?>/g,"").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+        dds = dds.substr(0,200);
+        $(".col-sm-6.col-md-4").eq(i).find(".content").html(dds);
+    }
+</script>
+<%include footer.html %>

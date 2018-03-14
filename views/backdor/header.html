@@ -1,0 +1,68 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><%= title %></title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 51px;">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="/backdor"><h3>E-blog博客</h3></a>
+                </li>
+                <li>
+                    <a href="/backdor"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;用户管理
+                    <span class="glyphicon glyphicon-menu-down f_r"></span></a>
+                    <ul class="nav userlist noblock">
+                        <li><a href="/backdor/userList">blog用户管理</a></li>
+                        <li><a href="/backdor/adminList">后台角色管理</a></li>
+                    </ul>
+                </li>
+                <li><a href="/backdor/passageList"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
+                <li><a href="/backdor/passageAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
+                <li><a href="/backdor/classList"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <nav class="navbar col-sm-offset-3 col-md-offset-2 navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><%= title %></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="设置"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="管理"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="<%= name %>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="更多"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="searchform" method="post" enctype="multipart/form-data" onsubmit="search()">
+                        <input type="text" class="form-control" id="search" name="search"  placeholder="搜索">
+                        <span class="glyphicon glyphicon-search"  aria-hidden="true" onclick="search()"></span>
+                    </form>
+                </div>
+            </nav>

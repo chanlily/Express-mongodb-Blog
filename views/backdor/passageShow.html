@@ -1,0 +1,26 @@
+<%include header.html %>
+            <h2 style="text-align: center;"><%= doc.title %></h2>
+            <p style="text-align: center">作者：<%= doc.author %>&nbsp;&nbsp;&nbsp;&nbsp;发布时间：<%= doc.time %></p>
+            <p class="p_id" style="display: none;"><%= doc.id %></p>
+            <div class="table-responsive" style="text-align: center;">
+                <% if (doc.coverImg){ %>
+                <img src="/uploads/<%= doc.coverImg %>"><br/>
+                <% } %>
+                <div class="contentWrap" id="div1" style="text-align: left;padding: 20px 100px;">
+                    <!--<%= doc.content %>-->
+                </div>
+            </div>
+            <p style="text-align: center"><a href="javascript:history.go(-1)">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:history.go(-1)">下一页</a></p>
+<script>
+    $(".col-sm-3 .nav-sidebar").find("li").eq(5).addClass("active");
+    var id = $(".p_id").html();
+    $.ajax({
+        url:'/backdor/json/'+id,
+        type:'get',
+        success:function (data,status) {
+            $(".contentWrap").html(data.content);
+        }
+    });
+</script>
+<%include footer.html %>

@@ -1,0 +1,28 @@
+<%include header.html %>
+            <h2 class="sub-header">分类管理<a style="float:right;" href="/backdor/classAdd" class="btn btn-primary">添加分类</a></h2>
+            <div class="table-responsive">
+                <table class="table table-striped row">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-3">#</th>
+                        <th class="col-sm-3">分类</th>
+                        <th class="col-sm-3">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var a = 0;a< post.length;a++) { %>
+                    <tr>
+                        <td class="a_index"><%= post[a].classId %></td>
+                        <td><%= post[a].className%></td>
+                        <td><a href="/backdor/classEdit/<%= post[a]._id%>" class="btn btn-default">编辑</a>
+                            <a href="/backdor/classdelete/<%= post[a]._id%>" class="btn btn-default delete">删除</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+<script>
+    $(".col-sm-3 .nav-sidebar").find("li").eq(7).addClass("active");
+</script>
+<%include footer.html %>

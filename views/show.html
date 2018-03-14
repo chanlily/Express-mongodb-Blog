@@ -1,0 +1,28 @@
+<%include header.html %>
+<div class="container-fluid">
+    <div class="row col-md-offset-1" style="margin-bottom: 30px;">
+        <div class="col-sm-10">
+            <div class="page-header" style="margin-top:80px;">
+                <h3 style="text-align: center"><%= doc.title %></h3>
+            </div>
+            <div class="media">
+                <div class="media-body">
+                    <h3 class="media-heading" style="text-align: center"><small>作者：<%= doc.author %>&nbsp;&nbsp;时间：<%= doc.time %></small></h3>
+                    <img src="/uploads/<%= doc.coverImg %>" alt="<%= doc.title %>">
+                    <div class="content">
+                        <%= doc.content %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        var a = $(".content").html();
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+        var dds = a.replace(/&amp;/g, "").replace(/<\/?.+?>/g,"").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+        dds = dds.substr(0,200);
+        $(".content").html(dds);
+</script>
+<%include footer.html %>

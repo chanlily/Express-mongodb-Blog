@@ -1,0 +1,30 @@
+<%include header.html %>
+<div class="sub-header" style="text-align: right;">
+    <a href="/backdor/userAdd" class="btn btn-primary">添加用户</a>
+</div>
+<div style="clear: both;"></div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>用户名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var a = 0;a< post.length;a++) { %>
+        <tr>
+            <td><%= a%></td>
+            <td><%= post[a].name%></td>
+            <td><a href="/backdor/userDelete/<%= post[a]._id%>" class="btn btn-default delete">删除</a></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(".userlist").removeClass("noblock");
+    $(".col-sm-3 .nav-sidebar").find("li").eq(3).addClass("active");
+</script>
+<%include footer.html %>

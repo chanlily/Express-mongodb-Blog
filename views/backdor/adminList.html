@@ -1,0 +1,36 @@
+<%include header.html %>
+<div class="sub-header" style="text-align: right;">
+    <a href="/backdor/adminAdd" class="btn btn-primary">添加用户</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>用户名</th>
+            <th>是否超级管理员</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var a = 0;a< post.length;a++) { %>
+        <tr>
+            <td><%= (a+1)%></td>
+            <td><%= post[a].name%></td>
+            <% if (post[a].isAdmin == "1"){%>
+            <td>是</td>
+            <% }else{ %>
+            <td>否</td>
+            <%}%>
+            <td><a href="/backdor/adminEdit/<%= post[a]._id%>" class="btn btn-default">编辑</a>
+                <a href="/backdor/adminDelete/<%= post[a]._id%>" class="btn btn-default delete">删除</a></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(".userlist").removeClass("noblock");
+    $(".col-sm-3 .nav-sidebar").find("li").eq(4).addClass("active");
+</script>
+<%include footer.html %>

@@ -1,0 +1,44 @@
+<%include header.html %>
+<%include left_navbar.html %>
+<%if (post.length == 0){%>
+<p>暂无文章发布</p>
+<%}else{%>
+          <!-- List group -->
+          <ul class="list-group">
+            <% for (var a = 0;a< post.length;a++) { %>
+            <li class="list-group-item">
+              <div class="media">
+                <div class="media-left media-middle">
+                  <a href="/show/<%= post[a].id%>">
+                    <img class="media-object" src="/uploads/<%= post[a].coverImg %>" alt="<%= post[a].title%>" style="width: 100px;">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= post[a].title%></h4>
+                  <p class="list-group-item-text"><%= post[a].content%></p>
+                </div>
+              </div>
+            </li>
+            <%}%>
+          </ul>
+<%}%>
+<a class="btn btn-danger" href="/passage">我要发布</a>
+<%include left_navEnd.html %>
+<script>
+    $(".col-sm-2.col-md-2 .list-group").find("li").eq(2).addClass("list-group-item-danger");
+    var len = $(".panel .list-group").find(".list-group-item").length;
+//    console.log(len);
+    //    var b = $(".panel .list-group-item").html();
+    //    console.log(b);
+    for (var i = 0;i<len;i++){
+        var a = $(".panel .list-group-item").eq(i).find(".list-group-item-text").html();
+        if(a){
+            var dds = a.replace(/&amp;/g, "").replace(/<\/?.+?>/g,"").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+            dds = dds.substr(0,200);
+            $(".panel .list-group-item").eq(i).find(".list-group-item-text").html(dds);
+        }
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+    }
+</script>
+<%include footer.html %>

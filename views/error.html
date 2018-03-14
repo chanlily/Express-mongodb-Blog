@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title><%= message %></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  	<link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="well jumbotron">
+      <h1><%= message %></h1>
+	  <p><%= error.status %></p>
+      <p style="color:rgba(0,0,0,0.5);"><%= error.stack %></div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<%include header.html %>
+<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/backdor/userAdd">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">用户名</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">用户密码</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control" id="password" name="password" placeholder="请输入用户密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
+    </div>
+</form>
+<script>
+    $(".userlist").removeClass("noblock");
+    $(".col-sm-3 .nav-sidebar").find("li").eq(3).addClass("active");
+</script>
+<%include footer.html %>

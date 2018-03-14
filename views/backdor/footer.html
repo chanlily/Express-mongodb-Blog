@@ -1,0 +1,58 @@
+</div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(".glyphicon-menu-down").parent().click(function () {
+        $(this).find(".glyphicon-menu-down").toggleClass("glyphicon-menu-up");
+        $(this).parent().find(".nav").toggleClass("noblock");
+    });
+    function selectClass(){
+        var options=$("#className option:selected");
+        var value =options.val();
+        var url = '/backdor/passageList/';
+        if (value){
+            url = url+ value;
+            $.ajax({
+                url:url,
+                type:'get',
+                success:function (data,status) {
+                    $(".sucessSearch").css("display","none");
+                    var strhtml;
+                    //console.log(data);
+                    for(i = 0;i<data.length;i++){
+                        var b = data[i].content;
+//                        console.log(b);
+                        var bbs = b.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"").replace(/<\/?.+?>/g,"");
+                        bbs = bbs.substr(0,200);
+//                        console.log(bbs);
+
+                        strhtml+= "<tr>" +
+                            "<td class='a_index'>"+(i+1)+"</td>" +
+                            "<td>"+data[i].title+"</td>" +
+                            "<td><img style='height:39px;' src='/uploads/"+data[i].coverImg+"'></td>" +
+                            "<td>"+data[i].className+"</td>" +
+                            "<td><p class='content'>"+bbs+"</p></td>"+
+                            "<td>"+data[i].author+"</td>" +
+                            "<td>"+data[i].time+"</td>" +
+                            "<td><a href='/backdor/passageEdit/"+data[i]._id+"' class='btn btn-default'>编辑</a>"+
+                            "<a href='/backdor/view/"+data[i]._id+ "'class='btn btn-default'>查看</a>"+
+                            "<a href='/backdor/delete/"+data[i]._id+ "' class='btn btn-default delete'>删除</a></td>" +
+                            "</tr>"
+                    }
+                    $("tbody").html(strhtml);
+                }
+            })
+        }
+    }
+    function search() {
+        var search = $("#search").val();
+        location.href = '/backdor/Search/'+search;
+    }
+</script>
+</body>
+</html>

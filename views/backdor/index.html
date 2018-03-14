@@ -1,0 +1,53 @@
+<%include header.html %>
+            <div class="row placeholders">
+                <div class="col-xs-4 col-sm-4 placeholder label label-success">
+                    <h4>用户会员分析<span class="badge"><%= userCount %></span></h4>
+                </div>
+                <div class="col-xs-4 col-sm-4 placeholder label label-info">
+                    <h4>文章数据分析<span class="badge"><%= passageCount %></span></h4>
+                </div>
+                <div class="col-xs-4 col-sm-4 placeholder label label-warning">
+                    <h4>标签数据分析<span class="badge"><%= classCount %></span></h4>
+                </div>
+            </div>
+
+            <h2 class="sub-header">文章列表</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>图片</th>
+                        <th>标题</th>
+                        <th>分类</th>
+                        <th>作者</th>
+                        <th>查看</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var a = 0;a< post.length;a++) { %>
+                    <tr>
+                        <td class="a_index"><%= a + 1 %></td>
+                        <td><img style="height:39px;" src="/uploads/<%= post[a].coverImg %>"></td>
+                        <td class="content"><%= post[a].title%></td>
+                        <td><%= post[a].className%></td>
+                        <td><%= post[a].author%></td>
+                        <td><a href="/backdor/view/<%= post[a]._id%>" class="btn btn-default">查看</a></td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+<script>
+    $(".col-sm-3 .nav-sidebar").find("li").eq(1).addClass("active");
+    var len = $(".table tbody").find("tr").length;
+    for (var i = 0;i<len;i++){
+        var a = $(".table tbody tr").eq(i).find(".content").html();
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+        var dds = a.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+        dds = dds.substr(0,200);
+        $(".table  tbody tr").eq(i).find(".content").html(dds);
+    }
+</script>
+<%include footer.html %>

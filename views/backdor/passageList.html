@@ -1,0 +1,64 @@
+<%include header.html %>
+            <div class="sub-header">
+                <a style="float:right;" href="/backdor/passageAdd" class="btn btn-primary">添加文章</a>
+                    <select style="width:150px;" class="form-control" id="className" name="className" onchange="selectClass()">
+                        <option value ="*">分类选择：</option>
+                        <% for (var a = 0;a< arr.length;a++) { %>
+                        <option value ="<%= arr[a].classId%>"><%= arr[a].className%></option>
+                        <% }%>
+                    </select>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="table-responsive">
+                <% if (search != '' && post.length == 0) { %>
+                <p style="padding: 20px;">很抱歉，没有找到与“<%= search %>”相关的网页。</p>
+                <% } else{%>
+                <table class="table table-striped row">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-1">#</th>
+                        <th class="col-sm-2">标题</th>
+                        <th class="col-sm-1">图片</th>
+                        <th class="col-sm-1">分类</th>
+                        <th class="col-sm-3">内容</th>
+                        <th class="col-sm-1">作者</th>
+                        <th class="col-sm-1">时间</th>
+                        <th class="col-sm-2">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var a = 0;a< post.length;a++) { %>
+                    <tr>
+                        <td class="a_index"><%= a+1 %></td>
+                        <td><%= post[a].title%></td>
+                        <td><img style="height:39px;" src="/uploads/<%= post[a].coverImg %>"></td>
+                        <td><%= post[a].className%></td>
+                        <td><p class="content"><%= post[a].content%></p></td>
+                        <td><%= post[a].author%></td>
+                        <td><%= post[a].time%></td>
+                        <td><a href="/backdor/passageEdit/<%= post[a]._id%>" class="btn btn-default">编辑</a>
+                            <a href="/backdor/view/<%= post[a]._id%>" class="btn btn-default">查看</a>
+                            <a href="/backdor/delete/<%= post[a]._id%>" class="btn btn-default delete">删除</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+                <% }%>
+                <% if (search != ''){%>
+                <p style="padding: 5px 10px;" class="sucessSearch">成功查询到<%=post.length%>条与“<%= search %>”相关的网页。</p>
+                <% }%>
+            </div>
+<script>
+    $(".col-sm-3 .nav-sidebar").find("li").eq(5).addClass("active");
+    var len = $(".table tbody").find("tr").length;
+    for (var i = 0;i<len;i++){
+        var a = $(".table tbody tr").eq(i).find(".content").html();
+        //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+        var dds = a.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+        dds = dds.substr(0,200);
+        $(".table  tbody tr").eq(i).find(".content").html(dds);
+    }
+</script>
+<%include footer.html %>

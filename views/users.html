@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .m15{ margin: 15px;}
+        .tc{ text-align: center;font-size: 18px;font-weight: 600;}
+    </style>
+</head>
+<body screen_capture_injected="true">
+<div class="container">
+    <h1>Your name: <%= name %>  </h1>
+    <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post">
+        <fieldset>
+            <legend></legend>
+            <div class="panel panel-default">
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <form class="ui form segment" method="post">
+                            <div class="field required">
+                                <label>标题</label>
+                                <input type="text" id="title" name="title">
+                            </div>
+                            <div class="field required">
+                                <label>图片</label>
+                                <input type="file"  id="file" name="file">
+                            </div>
+                            <div class="field required">
+                                <label>内容</label>
+                                <textarea name="content"  id="content" rows="15"></textarea>
+                            </div>
+                            <input type="submit" class="ui button" value="发布">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".button").click(function(){
+            var title = $("#title").val();
+            var file = $("#file").val();
+            var content = $("#content").val();
+            var data = {"title":title,"file":file,"content":content};
+            $.ajax({
+                url:'/passage',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        //alert(location.href);
+                        alert("发布成功！");
+                        location.href = 'home';
+                        //alert(location.href);
+                    }
+                },
+                error: function(data,status){
+                    console.log(data);
+                    if(status == 'error'){
+                        alert("发布失败！"+data);
+                        //alert("用户或密码错误");
+                        console.log(data);
+                        data="";
+                        location.href = 'users';
+                        //alert(location.href);
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

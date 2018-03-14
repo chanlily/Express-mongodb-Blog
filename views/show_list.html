@@ -1,0 +1,37 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><%= title %></title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="row">
+    <% for (var a = 0;a< post.length;a++) { %>
+    <div class="col-sm-6 col-md-4 f_l">
+        <div class="thumbnail">
+            <img src="/uploads/<%= post[a].coverImg %>" alt="<%= post[a].title%>">
+            <div class="caption">
+                <h3><%= post[a].title%></h3>
+                <p><%= post[a].content%></p>
+                <p><a href="/show/<%= post._id %>/edit" class="btn btn-primary" role="button">编辑</a>
+                    <a href="/show/<%= post._id %>/remove" class="btn btn-default" role="button">删除</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+</body>
+</html>

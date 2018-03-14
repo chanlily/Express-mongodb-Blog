@@ -1,0 +1,28 @@
+module.exports = { 
+    user:{
+        name:{type:String,required:true},
+        password:{type:String,required:true}
+    },
+    people:{
+        name:{type:String,required:true},
+        password:{type:String,required:true},
+        avatar:{type:String,required:true}//头像
+    },
+	passage:{
+        title:{type:String,required:true},//文章标题
+        content:{type:String,required:true},//文章内容
+        coverImg:{type:String,required:true},//封面图片
+        author:{type:String,required:true},//作者
+        time:{type:String,required:true},//时间
+        className:{type:String,required:true}//文章分类
+	},
+	className:{
+        classId:{type:String,required:true},//分类id
+        className:{type:String,required:true}//分类名称
+    },
+    admin:{
+        name:{type:String,required:true},
+        isAdmin:{type:String,required:false},
+        password:{type:String,required:true}
+    }
+};

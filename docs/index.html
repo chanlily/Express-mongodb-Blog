@@ -1,0 +1,364 @@
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>后台管理首页</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <style>
+        .f_r{float: right;}
+        .f_l{float: left;}
+        .sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        .sidebar {
+            display: none;
+        }
+        footer{background:#f5f5f5;}
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: block;
+                overflow-x: hidden;
+                overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+                background-color: rgb(50, 64, 87);
+                border-right: 1px solid #eee;
+                /*padding-top:5px;*/
+            }
+        }
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: -21px; /* 20px padding + 1px border */
+            margin-bottom: 20px;
+            margin-left: -20px;
+        }
+        .nav-sidebar > li > a {
+            padding:15px 30px;
+            color:#bfcbd9;
+        }
+        .nav-sidebar > li > a:visited, .nav-sidebar > li > ul > li >a:visited{
+            background-color: rgb(50, 64, 87);
+        }
+        .nav-sidebar > li a:hover,
+        .nav-sidebar > li > ul > li >a:hover{
+            background: rgba(66,139,202,0.3);
+            color: #fff;
+        }
+        .nav-sidebar > .active,
+        .nav-sidebar > .active:hover,
+        .nav-sidebar > .active:focus {
+            color: #fff;
+            background-color: rgba(66,139,202,0.6);
+        }
+        .main {
+            padding: 10px 30px;
+        }
+        .main .page-header {
+            margin-top: 0;
+        }
+        .placeholders {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .placeholders h4 {
+            margin-bottom: 0;
+        }
+        .placeholder {
+            padding: 50px 20px;
+            border-radius: 20px;
+        }
+        .badge{margin-left:5px;background: #fff;color:rgb(66,139,202);}
+        .img_input_box{
+            width:50px;
+            border:1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .img_input_box img{
+            width:50px;
+            display: block;
+            cursor: pointer;
+        }
+        .img_input_box input{
+            opacity:0;
+            position: absolute;
+            cursor: pointer;
+            top:0;
+            height:100%;
+        }
+
+        .navbar-fixed-top{padding:0 15px;background: rgba(255,255,255,1) ;box-shadow: 1px 1px rgba(0,0,0,0.1);}
+        .navbar-toggle .icon-bar{background-color:#337ab7;}
+        .navbar-right{position: relative;}
+        .navbar-right .form-control{border-radius: 12px;}
+        .navbar-right .glyphicon-search{position: absolute;font-size: 18px;color:rgba(66,139,202,0.7);right:25px;top:8px;}
+        .navbar-right .glyphicon-search:hover{cursor: pointer;}
+        .nav-sidebar > li > ul > li>a{padding-left: 55px;color:#bfcbd9;}
+        .nav-sidebar > li > ul > li.active{background-color: rgba(66,139,202,0.6);}
+        .nav-sidebar > li > ul > li.active a{color:#fff;}
+        .nav-sidebar > li > ul{background: rgba(255,255,255,0.1);}
+        .noblock{display: none;}
+
+        .table,.table th{text-align: center;}
+        .content{text-align: justify;text-overflow: ellipsis;white-space: unset;height:3em;line-height: 1.5em;overflow: hidden;}
+    </style>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 51px;">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a href="/backdor"><h3>E-blog博客</h3></a>
+                </li>
+                <li class="active">
+                    <a href="/backdor"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;用户管理
+                    <span class="glyphicon glyphicon-menu-down f_r"></span></a>
+                    <ul class="nav userlist noblock">
+                        <li><a href="/backdor/userList">blog用户管理</a></li>
+                        <li><a href="/backdor/adminList">后台角色管理</a></li>
+                    </ul>
+                </li>
+                <li><a href="/backdor/passageList"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
+                <li><a href="/backdor/passageAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
+                <li><a href="/backdor/classList"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <nav class="navbar col-sm-offset-3 col-md-offset-2 navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">后台管理首页</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="设置"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="管理"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="admin"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+                        <li><a href="#" title="更多"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="searchform" method="post" enctype="multipart/form-data" onsubmit="search()">
+                        <input type="text" class="form-control" id="search" name="search" placeholder="搜索">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true" onclick="search()"></span>
+                    </form>
+                </div>
+            </nav>
+            <div class="row placeholders">
+                <div class="col-xs-4 col-sm-4 placeholder label label-success">
+                    <h4>用户会员分析<span class="badge">12</span></h4>
+                </div>
+                <div class="col-xs-4 col-sm-4 placeholder label label-info">
+                    <h4>文章数据分析<span class="badge">12</span></h4>
+                </div>
+                <div class="col-xs-4 col-sm-4 placeholder label label-warning">
+                    <h4>标签数据分析<span class="badge">3</span></h4>
+                </div>
+            </div>
+
+            <h2 class="sub-header">文章列表</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>图片</th>
+                        <th>标题</th>
+                        <th>分类</th>
+                        <th>作者</th>
+                        <th>查看</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td class="a_index">1</td>
+                        <td><img style="height:39px;" src="/uploads/123star_yw.png"></td>
+                        <td class="content">Node.js 创建第一个应用</td>
+                        <td>node学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5a7910d65d392f2008f95ba5" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">2</td>
+                        <td><img style="height:39px;" src="/uploads/123微信图片_20180309155319.png"></td>
+                        <td class="content">required 模块</td>
+                        <td>前端学习</td>
+                        <td>node</td>
+                        <td><a href="/backdor/view/5a7d5a5ae342302888e97785" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">3</td>
+                        <td><img style="height:39px;" src="/uploads/5a66f9a996620e20108e36f41.jpg"></td>
+                        <td class="content">NPM 使用介绍</td>
+                        <td>PHP学习</td>
+                        <td>author</td>
+                        <td><a href="/backdor/view/5a7d5a65e342302888e97786" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">4</td>
+                        <td><img style="height:39px;" src="/uploads/123short_supply.png"></td>
+                        <td class="content">Node.js REPL(交互式解释器)</td>
+                        <td>node学习</td>
+                        <td>author</td>
+                        <td><a href="/backdor/view/5a7d5a6fe342302888e97787" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">5</td>
+                        <td><img style="height:39px;" src="/uploads/123u=4225967668,4102776849&amp;fm=27&amp;gp=0.jpg"></td>
+                        <td class="content">Node.js 回调函数</td>
+                        <td>前端学习</td>
+                        <td>author</td>
+                        <td><a href="/backdor/view/5a7d68dea12eb431c45f9de3" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">6</td>
+                        <td><img style="height:39px;" src="/uploads/123微信图片_20180309155319.png"></td>
+                        <td class="content">Node.js 事件循环</td>
+                        <td>PHP学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5a7e56e47ec7110df406a17b" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">7</td>
+                        <td><img style="height:39px;" src="/uploads/123效果.jpg"></td>
+                        <td class="content">Node.js 所有的异步 I/O 操作</td>
+                        <td>node学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5a7e612fba600c1fdc69aeab" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">8</td>
+                        <td><img style="height:39px;" src="/uploads/123star_bk.png"></td>
+                        <td class="content">Node.js Buffer(缓冲区)</td>
+                        <td>PHP学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5a7e6176ba600c1fdc69aeac" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">9</td>
+                        <td><img style="height:39px;" src="/uploads/123star_yw.png"></td>
+                        <td class="content">Node.js Stream(流)</td>
+                        <td>node学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5a7e62f4625f1a1f4453bacd" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="a_index">10</td>
+                        <td><img style="height:39px;" src="/uploads/123short_supply.png"></td>
+                        <td class="content">Ajax上传图片及上传前先预览功能实例代码</td>
+                        <td>PHP学习</td>
+                        <td>1232242</td>
+                        <td><a href="/backdor/view/5aa62228cf953c2360a0167b" class="btn btn-default">查看</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                $(".col-sm-3 .nav-sidebar").find("li").eq(1).addClass("active");
+                var len = $(".table tbody").find("tr").length;
+                for (var i = 0;i<len;i++){
+                    var a = $(".table tbody tr").eq(i).find(".content").html();
+                    //console.log(a);
+//        var dds = a.replace(/&/g, "").replace(/</g, "").replace(/>/g, "").replace(/"/g, "").replace(/'/g, "");
+                    var dds = a.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"");
+                    dds = dds.substr(0,200);
+                    $(".table  tbody tr").eq(i).find(".content").html(dds);
+                }
+            </script>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(".glyphicon-menu-down").parent().click(function () {
+        $(this).find(".glyphicon-menu-down").toggleClass("glyphicon-menu-up");
+        $(this).parent().find(".nav").toggleClass("noblock");
+    });
+    function selectClass(){
+        var options=$("#className option:selected");
+        var value =options.val();
+        var url = '/backdor/passageList/';
+        if (value){
+            url = url+ value;
+            $.ajax({
+                url:url,
+                type:'get',
+                success:function (data,status) {
+                    $(".sucessSearch").css("display","none");
+                    var strhtml;
+                    //console.log(data);
+                    for(i = 0;i<data.length;i++){
+                        var b = data[i].content;
+//                        console.log(b);
+                        var bbs = b.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"").replace(/<\/?.+?>/g,"");
+                        bbs = bbs.substr(0,200);
+//                        console.log(bbs);
+
+                        strhtml+= "<tr>" +
+                            "<td class='a_index'>"+(i+1)+"</td>" +
+                            "<td>"+data[i].title+"</td>" +
+                            "<td><img style='height:39px;' src='/uploads/"+data[i].coverImg+"'></td>" +
+                            "<td>"+data[i].className+"</td>" +
+                            "<td><p class='content'>"+bbs+"</p></td>"+
+                            "<td>"+data[i].author+"</td>" +
+                            "<td>"+data[i].time+"</td>" +
+                            "<td><a href='/backdor/passageEdit/"+data[i]._id+"' class='btn btn-default'>编辑</a>"+
+                            "<a href='/backdor/view/"+data[i]._id+ "'class='btn btn-default'>查看</a>"+
+                            "<a href='/backdor/delete/"+data[i]._id+ "' class='btn btn-default delete'>删除</a></td>" +
+                            "</tr>"
+                    }
+                    $("tbody").html(strhtml);
+                }
+            })
+        }
+    }
+    function search() {
+        var search = $("#search").val();
+        location.href = '/backdor/Search/'+search;
+    }
+</script>
+
+</body></html>

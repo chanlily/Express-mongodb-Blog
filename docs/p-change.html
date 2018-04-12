@@ -1,0 +1,266 @@
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>修改密码</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <style>
+        .f_r{float: right;}
+        .f_l{float: left;}
+        .sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        .sidebar {
+            display: none;
+        }
+        footer{background:#f5f5f5;}
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: block;
+                overflow-x: hidden;
+                overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+                background-color: rgb(50, 64, 87);
+                border-right: 1px solid #eee;
+                /*padding-top:5px;*/
+            }
+        }
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: -21px; /* 20px padding + 1px border */
+            margin-bottom: 20px;
+            margin-left: -20px;
+        }
+        .nav-sidebar > li > a {
+            padding:15px 30px;
+            color:#bfcbd9;
+        }
+        .nav-sidebar > li > a:visited, .nav-sidebar > li > ul > li >a:visited{
+            background-color: rgb(50, 64, 87);
+        }
+        .nav-sidebar > li a:hover,
+        .nav-sidebar > li > ul > li >a:hover{
+            background: rgba(66,139,202,0.3);
+            color: #fff;
+        }
+        .nav-sidebar > .active,
+        .nav-sidebar > .active:hover,
+        .nav-sidebar > .active:focus {
+            color: #fff;
+            background-color: rgba(66,139,202,0.6);
+        }
+        .main {
+            padding: 10px 30px;
+        }
+        .main .page-header {
+            margin-top: 0;
+        }
+        .placeholders {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .placeholders h4 {
+            margin-bottom: 0;
+        }
+        .placeholder {
+            padding: 50px 20px;
+            border-radius: 20px;
+        }
+        .badge{margin-left:5px;background: #fff;color:rgb(66,139,202);}
+        .img_input_box{
+            width:50px;
+            border:1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .img_input_box img{
+            width:50px;
+            display: block;
+            cursor: pointer;
+        }
+        .img_input_box input{
+            opacity:0;
+            position: absolute;
+            cursor: pointer;
+            top:0;
+            height:100%;
+        }
+
+        .navbar-fixed-top{padding:0 15px;background: rgba(255,255,255,1) ;box-shadow: 1px 1px rgba(0,0,0,0.1);}
+        .navbar-toggle .icon-bar{background-color:#337ab7;}
+        .navbar-right{position: relative;}
+        .navbar-right .form-control{border-radius: 12px;}
+        .navbar-right .glyphicon-search{position: absolute;font-size: 18px;color:rgba(66,139,202,0.7);right:25px;top:8px;}
+        .navbar-right .glyphicon-search:hover{cursor: pointer;}
+        .nav-sidebar > li > ul > li>a{padding-left: 55px;color:#bfcbd9;}
+        .nav-sidebar > li > ul > li.active{background-color: rgba(66,139,202,0.6);}
+        .nav-sidebar > li > ul > li.active a{color:#fff;}
+        .nav-sidebar > li > ul{background: rgba(255,255,255,0.1);}
+        .noblock{display: none;}
+
+        .table,.table th{text-align: center;}
+        .content{text-align: justify;text-overflow: ellipsis;white-space: unset;height:3em;line-height: 1.5em;overflow: hidden;}
+    </style>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">E-BLOG</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+
+            <li><a href="/passageList/1001" title="前端学习">前端学习</a></li>
+
+            <li><a href="/passageList/1002" title="node学习">node学习</a></li>
+
+            <li><a href="/passageList/1003" title="PHP学习">PHP学习</a></li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="/layout" title="用户中心"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;用户中心</a></li>
+            <li><a href="" title="注销"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;注销</a></li>
+
+        </ul>
+        <form class="navbar-form navbar-right" role="searchform" method="post" enctype="multipart/form-data" onsubmit="return false">
+            <input type="text" class="form-control" id="search" name="search" placeholder="搜索">
+            <span class="glyphicon glyphicon-search" aria-hidden="true" onclick="search()"></span>
+        </form>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row col-md-offset-1" style="margin-top: 86px;margin-bottom: 20px;">
+        <div class="col-sm-2 col-md-2">
+            <ul class="list-group" style="text-align: center;">
+                <li class="list-group-item">个人中心 1234567</li>
+                <li class="list-group-item"><a href="/home">个人主页</a></li>
+                <li class="list-group-item"><a href="/layout">我的发布</a></li>
+                <li class="list-group-item"><a href="/passage">发布文章</a></li>
+                <li class="list-group-item list-group-item-danger"><a href="change">帐号管理</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            <div class="panel panel-danger ">
+                <div class="panel-heading"><h4>修改密码</h4></div>
+                <div class="panel-body">
+                    <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
+                        <div class="form-group">
+                            <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                                <input type="text" class="form-control" id="oldpassword" name="oldpassword" placeholder="旧密码" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                                <input type="text" class="form-control" id="password" name="password" placeholder="请输入新密码" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                                <input type="text" class="form-control" id="password1" name="password1" placeholder="请再次输入密码" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-block" id="register1">修改密码</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".col-sm-2.col-md-2 .list-group").find("li").eq(4).addClass("list-group-item-danger");
+    $(function(){
+        $("#login1").click(function(){
+            location.href = 'login';
+        });
+        $("#register1").click(function(){
+            var oldpassword = $("#oldpassword").val();
+            var password = $("#password").val();
+            var password1 = $("#password1").val();
+            if(password !== password1){
+                $("#password").css("border","1px solid red");
+                $("#password1").css("border","1px solid red");
+            }else if(password === password1){
+                var data = {"oldpassword":oldpassword,"upwd":password};
+                $.ajax({
+                    url: '/change',
+                    type: 'post',
+                    data: data,
+                    success: function(data,status){
+                        if(status == 'success'){
+                            location.href = 'login';
+                        }
+                    },
+                    error: function(data,err){
+                        location.href = 'login';
+                    }
+                });
+            }
+        });
+    });
+</script>
+<footer>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+
+            <li><a href="/passageList/1001" title="前端学习">前端学习</a></li>
+
+            <li><a href="/passageList/1002" title="node学习">node学习</a></li>
+
+            <li><a href="/passageList/1003" title="PHP学习">PHP学习</a></li>
+
+            <li class="active"><a href="/home">个人中心</a></li>
+            <li class="active"><a href="/about">关于E-blog</a></li>
+        </ol>
+        <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>. Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+        <p>本项目源码受 <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>开源协议保护，文档受 <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> 开源协议保护。</p>
+    </div>
+</footer>
+<script>
+    function search() {
+        var search = $("#search").val();
+        location.href = '/search/'+search;
+    }
+</script>
+
+
+</body></html>

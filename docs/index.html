@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>后台管理首页</title>
+    <title>管理员用户列表</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -102,7 +102,6 @@
             top:0;
             height:100%;
         }
-
         .navbar-fixed-top{padding:0 15px;background: rgba(255,255,255,1) ;box-shadow: 1px 1px rgba(0,0,0,0.1);}
         .navbar-toggle .icon-bar{background-color:#337ab7;}
         .navbar-right{position: relative;}
@@ -114,7 +113,6 @@
         .nav-sidebar > li > ul > li.active a{color:#fff;}
         .nav-sidebar > li > ul{background: rgba(255,255,255,0.1);}
         .noblock{display: none;}
-
         .table,.table th{text-align: center;}
         .content{text-align: justify;text-overflow: ellipsis;white-space: unset;height:3em;line-height: 1.5em;overflow: hidden;}
     </style>
@@ -130,21 +128,21 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li>
-                    <a href="/backdor"><h3>E-blog博客</h3></a>
+                    <a href="https://chanlily.github.io/Express-mongodb-Blog/"><h3>E-blog博客</h3></a>
                 </li>
-                <li class="active">
-                    <a href="/backdor"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
+                <li>
+                    <a href="https://chanlily.github.io/Express-mongodb-Blog/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
                 </li>
                 <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;用户管理
                     <span class="glyphicon glyphicon-menu-down f_r"></span></a>
-                    <ul class="nav userlist noblock">
-                        <li><a href="/backdor/userList">blog用户管理</a></li>
-                        <li><a href="/backdor/adminList">后台角色管理</a></li>
+                    <ul class="nav userlist">
+                        <li><a href="#">blog用户管理</a></li>
+                        <li class="active"><a href="https://chanlily.github.io/Express-mongodb-Blog/b-admin.html">后台角色管理</a></li>
                     </ul>
                 </li>
-                <li><a href="/backdor/passageList"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
-                <li><a href="/backdor/passageAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
-                <li><a href="/backdor/classList"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
+                <li><a href="https://chanlily.github.io/Express-mongodb-Blog/b-passage.html"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
+                <li><a href="https://chanlily.github.io/Express-mongodb-Blog/b-passageAdd.html"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -156,11 +154,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">后台管理首页</a>
+                    <a class="navbar-brand" href="#">管理员用户列表</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                        <li><a href="https://chanlily.github.io/Express-mongodb-Blog/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="设置"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="管理"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="admin"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
@@ -201,92 +199,92 @@
 
                     <tr>
                         <td class="a_index">1</td>
-                        <td><img style="height:39px;" src="/uploads/123star_yw.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js 创建第一个应用</td>
                         <td>node学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5a7910d65d392f2008f95ba5" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">2</td>
-                        <td><img style="height:39px;" src="/uploads/123微信图片_20180309155319.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">required 模块</td>
                         <td>前端学习</td>
                         <td>node</td>
-                        <td><a href="/backdor/view/5a7d5a5ae342302888e97785" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">3</td>
-                        <td><img style="height:39px;" src="/uploads/5a66f9a996620e20108e36f41.jpg"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">NPM 使用介绍</td>
                         <td>PHP学习</td>
                         <td>author</td>
-                        <td><a href="/backdor/view/5a7d5a65e342302888e97786" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">4</td>
-                        <td><img style="height:39px;" src="/uploads/123short_supply.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js REPL(交互式解释器)</td>
                         <td>node学习</td>
                         <td>author</td>
-                        <td><a href="/backdor/view/5a7d5a6fe342302888e97787" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">5</td>
-                        <td><img style="height:39px;" src="/uploads/123u=4225967668,4102776849&amp;fm=27&amp;gp=0.jpg"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js 回调函数</td>
                         <td>前端学习</td>
                         <td>author</td>
-                        <td><a href="/backdor/view/5a7d68dea12eb431c45f9de3" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">6</td>
-                        <td><img style="height:39px;" src="/uploads/123微信图片_20180309155319.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js 事件循环</td>
                         <td>PHP学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5a7e56e47ec7110df406a17b" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">7</td>
-                        <td><img style="height:39px;" src="/uploads/123效果.jpg"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js 所有的异步 I/O 操作</td>
                         <td>node学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5a7e612fba600c1fdc69aeab" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">8</td>
-                        <td><img style="height:39px;" src="/uploads/123star_bk.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js Buffer(缓冲区)</td>
                         <td>PHP学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5a7e6176ba600c1fdc69aeac" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">9</td>
-                        <td><img style="height:39px;" src="/uploads/123star_yw.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Node.js Stream(流)</td>
                         <td>node学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5a7e62f4625f1a1f4453bacd" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     <tr>
                         <td class="a_index">10</td>
-                        <td><img style="height:39px;" src="/uploads/123short_supply.png"></td>
+                        <td><img style="height:39px;" src="#"></td>
                         <td class="content">Ajax上传图片及上传前先预览功能实例代码</td>
                         <td>PHP学习</td>
                         <td>1232242</td>
-                        <td><a href="/backdor/view/5aa62228cf953c2360a0167b" class="btn btn-default">查看</a></td>
+                        <td><a href="#" class="btn btn-default">查看</a></td>
                     </tr>
 
                     </tbody>

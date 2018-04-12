@@ -130,21 +130,21 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li>
-                    <a href="/backdor"><h3>E-blog博客</h3></a>
+                    <a href="https://chanlily.github.io/Express-mongodb-Blog/"><h3>E-blog博客</h3></a>
                 </li>
                 <li>
-                    <a href="/backdor"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
+                    <a href="https://chanlily.github.io/Express-mongodb-Blog/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;首页</a>
                 </li>
                 <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;用户管理
                     <span class="glyphicon glyphicon-menu-down f_r"></span></a>
                     <ul class="nav userlist">
-                        <li><a href="/backdor/userList">blog用户管理</a></li>
-                        <li class="active"><a href="/backdor/adminList">后台角色管理</a></li>
+                        <li><a href="#">blog用户管理</a></li>
+                        <li class="active"><a href="https://chanlily.github.io/Express-mongodb-Blog/b-admin.html">后台角色管理</a></li>
                     </ul>
                 </li>
-                <li><a href="/backdor/passageList"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
-                <li><a href="/backdor/passageAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
-                <li><a href="/backdor/classList"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
+                <li><a href="https://chanlily.github.io/Express-mongodb-Blog/b-passage.html"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章管理</a></li>
+                <li><a href="https://chanlily.github.io/Express-mongodb-Blog/b-passageAdd.html"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;文章发布</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bookmark" onclick="search()" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;标签管理</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -160,7 +160,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                        <li><a href="https://chanlily.github.io/Express-mongodb-Blog/" title="首页"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="设置"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="管理"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></a></li>
                         <li><a href="#" title="admin"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
@@ -173,7 +173,7 @@
                 </div>
             </nav>
             <div class="sub-header" style="text-align: right;">
-                <a href="/backdor/adminAdd" class="btn btn-primary">添加用户</a>
+                <a href="#" class="btn btn-primary">添加用户</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -193,8 +193,8 @@
 
                         <td>是</td>
 
-                        <td><a href="/backdor/adminEdit/5aa77241f6f0720534598f73" class="btn btn-default">编辑</a>
-                            <a href="/backdor/adminDelete/5aa77241f6f0720534598f73" class="btn btn-default delete">删除</a></td>
+                        <td><a href="#" class="btn btn-default">编辑</a>
+                            <a href="#" class="btn btn-default delete">删除</a></td>
                     </tr>
 
                     <tr>
@@ -203,8 +203,8 @@
 
                         <td>否</td>
 
-                        <td><a href="/backdor/adminEdit/5aa78b49f402011010974b20" class="btn btn-default">编辑</a>
-                            <a href="/backdor/adminDelete/5aa78b49f402011010974b20" class="btn btn-default delete">删除</a></td>
+                        <td><a href="#" class="btn btn-default">编辑</a>
+                            <a href="#" class="btn btn-default delete">删除</a></td>
                     </tr>
 
                     </tbody>
@@ -227,44 +227,6 @@
         $(this).find(".glyphicon-menu-down").toggleClass("glyphicon-menu-up");
         $(this).parent().find(".nav").toggleClass("noblock");
     });
-    function selectClass(){
-        var options=$("#className option:selected");
-        var value =options.val();
-        var url = '/backdor/passageList/';
-        if (value){
-            url = url+ value;
-            $.ajax({
-                url:url,
-                type:'get',
-                success:function (data,status) {
-                    $(".sucessSearch").css("display","none");
-                    var strhtml;
-                    //console.log(data);
-                    for(i = 0;i<data.length;i++){
-                        var b = data[i].content;
-//                        console.log(b);
-                        var bbs = b.replace(/&amp;/g, "").replace(/&quot;/g, "").replace(/&apos;/g, "").replace(/&nbsp;/g, "").replace(/&lt;[^&gt;]+&gt;/g,"").replace(/<\/?.+?>/g,"");
-                        bbs = bbs.substr(0,200);
-//                        console.log(bbs);
-
-                        strhtml+= "<tr>" +
-                            "<td class='a_index'>"+(i+1)+"</td>" +
-                            "<td>"+data[i].title+"</td>" +
-                            "<td><img style='height:39px;' src='/uploads/"+data[i].coverImg+"'></td>" +
-                            "<td>"+data[i].className+"</td>" +
-                            "<td><p class='content'>"+bbs+"</p></td>"+
-                            "<td>"+data[i].author+"</td>" +
-                            "<td>"+data[i].time+"</td>" +
-                            "<td><a href='/backdor/passageEdit/"+data[i]._id+"' class='btn btn-default'>编辑</a>"+
-                            "<a href='/backdor/view/"+data[i]._id+ "'class='btn btn-default'>查看</a>"+
-                            "<a href='/backdor/delete/"+data[i]._id+ "' class='btn btn-default delete'>删除</a></td>" +
-                            "</tr>"
-                    }
-                    $("tbody").html(strhtml);
-                }
-            })
-        }
-    }
     function search() {
         var search = $("#search").val();
         location.href = '/backdor/Search/'+search;
